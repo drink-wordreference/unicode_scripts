@@ -1,6 +1,7 @@
 import bisect
 
-def _assert_exception(thunk, expect):
+# TODO: Use a proper unit test framework for all these tests.
+def _assert_error(thunk, expect):
   try:
     thunk()
   except expect:
@@ -30,7 +31,9 @@ class Range:
 
   def __init__(self, start, end):
     if end < start:
-      raise ValueError(f'Invalid range Range({start}, {end}). End of range must be greater than or equal to start of range.')
+      raise ValueError(f'Invalid range Range({start}, {end}). End of '
+                       f'range must be greater than or equal to '
+                       f'start of range.')
     self._start = start
     self._end = end
 
@@ -60,9 +63,10 @@ class Range:
   def __iter__(self):
     return range(self._start, self._end + 1)
 
+  # TODO: Use a proper unit test framework for all these tests.
   @classmethod
   def _test(cls):
-    _assert_exception(lambda: cls(3, 1), ValueError)
+    _assert_error(lambda: cls(3, 1), ValueError)
     assert(0 not in Range(1, 4))
     assert(1 in Range(1, 4))
     assert(2 in Range(1, 4))
@@ -108,8 +112,23 @@ class RangeDict:
       rangemap: List of 2-tuples, each tuple maps a Range to a value.
     """
 
-    # TODO: check explicitly for overlaps
     self._data = sorted(rangemap, key=lambda tup: tup[0])
+    self._validate()
+
+  def _validate(self):
+    prev = None
+    for r in self._data:
+      if not (prev is None or prev < r):
+        assert(not (prev > r))  # This would imply a sorting error.
+        raise ValueError(f'RangeDict: Ranges cannot overlap, but {r} '
+                         f'overlaps with {prev}.')
+      prev = r
+
+  def __repr__(self):
+    return f'RangeDict({self._data})'
+
+  def __eq__(self, other):
+    return self._data == other._data
 
   def _find(self, n):
     return bisect.bisect_left(self._data, n, key=lambda tup: tup[0])
@@ -161,9 +180,15 @@ class RangeDict:
     else:
       raise KeyError
 
+  # TODO: Use a proper unit test framework for all these tests.
   @classmethod
   def _test(cls):
-    d = RangeDict([(Range(1, 3), 'foo'), (Range(5, 9), 'bar')])
+    d = RangeDict([(Range(1, 3), 'A'), (Range(5, 9), 'B')])
+    assert(d != RangeDict([(Range(1, 3), 'B'), (Range(5, 9), 'A')]))
+    assert(d == RangeDict([(Range(5, 9), 'B'), (Range(1, 3), 'A')]))
+    _assert_error(
+        lambda: RangeDict([(Range(1, 5), 'A'), (Range(5, 9), 'A')]),
+        ValueError)
     assert(0 not in d)
     assert(1 in d)
     assert(2 in d)
@@ -173,10 +198,12 @@ class RangeDict:
     assert(6 in d)
     assert(9 in d)
     assert(10 not in d)
-    assert(d[2] == 'foo')
-    assert(d[6] == 'bar')
+    assert(d[2] == 'A')
+    assert(d[6] == 'B')
 
+# TODO: Use a proper unit test framework for all these tests.
 def _test_bisect():
+  # Verify that bisect_left works the way we intend it to.
   l = [Range(1, 3), Range(5, 9)]
   assert(bisect.bisect_left(l, 0) == 0)
   assert(bisect.bisect_left(l, 1) == 0)
@@ -189,6 +216,7 @@ def _test_bisect():
   assert(bisect.bisect_left(l, 9) == 1)
   assert(bisect.bisect_left(l, 10) == 2)
 
+# TODO: Use a proper unit test framework for all these tests.
 def _test():
   Range._test()
   _test_bisect()
