@@ -37,8 +37,17 @@ class Range:
     self._start = start
     self._end = end
 
+  def __str__(self):
+    return f'{str(self._start)} - {str(self._end)}'
+
   def __repr__(self):
-    return f'Range({self._start}, {self._end})'
+    return f'Range({repr(self._start)}, {repr(self._end)})'
+
+  def __format__(self, fmt):
+    return f'Range({format(self._start, fmt)}, {format(self._end, fmt)})'
+
+  def fmt(self, func=repr):
+    return f'Range({func(self._start)}, {func(self._end)})'
 
   def start(self):
     return self._start
@@ -124,8 +133,30 @@ class RangeDict:
                          f'overlaps with {prev}.')
       prev = r
 
+  def __str__(self):
+    contents = ', '.join(f'{str(r)}: {str(v)}'
+                         for (r, v) in self._data)
+    return f'{{{contents}}}'
+
   def __repr__(self):
-    return f'RangeDict({self._data})'
+    return f'RangeDict({repr(self._data)})'
+
+  def __format__(self, fmt):
+    contents = ', '.join(f'({format(r, fmt)}, {repr(v)})'
+                         for (r, v) in self._data)
+    return f'RangeDict([{contents}])'
+
+  def fmt(self, fmt_range=repr, fmt_value=repr):
+    contents = ', '.join(f'({r.fmt(fmt_range)}, {fmt_value(v)})'
+                         for (r, v) in self._data)
+    return f'RangeDict([{contents}])'
+
+  def pprint(self, indent=0, indent_offset=4, file=None):
+    print(' ' * indent + '{', file=file)
+    indent2 = indent + indent_offset
+    for (r, v) in self._data:
+      print(' ' * indent2, r, ': ', v, ',', sep='', file=file)
+    print(' ' * indent + '}', file=file)
 
   def __eq__(self, other):
     return self._data == other._data
