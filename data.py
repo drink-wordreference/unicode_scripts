@@ -8,6 +8,7 @@ class Script(enum.Enum):
   Zzzz = 'Unknown'
   Latn = 'Latin'
   Grek = 'Greek'
+  Copt = 'Coptic'
   Cyrl = 'Cyrillic'
   Armn = 'Armenian'
   Hebr = 'Hebrew'
@@ -49,6 +50,17 @@ class Script(enum.Enum):
   Talu = 'New Tai Lue'
   Bugi = 'Buginese'
   Lana = 'Tai Tham'
+  Bali = 'Balinese'
+  Sund = 'Sundanese'
+  Batk = 'Batak'
+  Lepc = 'Lepcha'
+  Olck = 'Ol Chiki'
+  Brai = 'Braille'
+  Glag = 'Glagolitic'
+  Tfng = 'Tifinagh'
+  Hani = 'Han'
+  Hrkt = 'Japanese syllabaries'
+  Bopo = 'Bopomofo'
 
 class URange(Range):
   def __init__(self, start, end):
@@ -62,26 +74,40 @@ DATA = {
     URange(0x00C0, 0x00D6),  # "
     URange(0x00D8, 0x00F6),  # "
     URange(0x00F8, 0x00FF),  # "
-    URange(0x0100, 0x02AF),  # Latin Extended-A + -B + IPA Extensions
+    URange(0x0100, 0x02AF),  # Latin Extended-A + Latin Extended-B +
+                             # IPA Extensions
     URange(0x1E00, 0x1EFF),  # Latin Extended Additional
+    URange(0x1D00, 0x1D25),  # Phonetic Extensions
+    URange(0x1D6C, 0x1D9A),  # " + Phonetic Extensions Supplement
+    URange(0x2C60, 0x2C7B),  # Latin Extended-C
+    URange(0x2C7E, 0x2C7F),  # "
     URange(0xFB00, 0xFB06),  # Alphabetic Presentation Forms
   ],
   Script.Grek: [
-    URange(0x0370, 0x0373),  # Greek
+    URange(0x0370, 0x0373),  # Greek and Coptic
     URange(0x0376, 0x0377),  # "
     URange(0x037B, 0x037D),  # "
     URange(0x037F, 0x037F),  # "
     URange(0x0386, 0x0386),  # "
-    URange(0x0388, 0x03FF),  # "
+    URange(0x0388, 0x03E1),  # "
+    URange(0x03F0, 0x03FF),  # "
     URange(0x1F00, 0x1FBC),  # Greek Extended
     URange(0x1FC2, 0x1FCC),  # "
     URange(0x1FD0, 0x1FDC),  # "
     URange(0x1FE0, 0x1FEC),  # "
     URange(0x1FF0, 0x1FFC),  # "
+    URange(0x1D26, 0x1D2A),  # Phonetic Extensions
+  ],
+  Script.Copt: [
+    URange(0x03E2, 0x03EF),  # Greek and Coptic
+    URange(0x2C80, 0x2CEF),  # Coptic
+    URange(0x2CF2, 0x2CF3),  # "
   ],
   Script.Cyrl: [
     URange(0x0400, 0x0481),  # Cyrillic
     URange(0x048A, 0x052F),  # " + Cyrillic Supplement
+    URange(0x1C80, 0x1C88),  # Cyrillic Extended-C
+    URange(0x1D2B, 0x1D2B),  # Phonetic Extensions
   ],
   Script.Armn: [
     URange(0x0531, 0x0556),  # Armenian
@@ -196,14 +222,19 @@ DATA = {
   Script.Geor: [
     URange(0x10A0, 0x10FA),  # Georgian
     URange(0x10FC, 0x10FF),  # "
+    URange(0x1C90, 0x1CBF),  # Georgian Extended
+    URange(0x2D00, 0x2D2D),  # Georgian Supplement
   ],
   Script.Hang: [
     URange(0x1100, 0x115E),  # Hangul Jamo
     URange(0x1161, 0x11FF),  # "
+    URange(0x3131, 0x3163),  # Hangul Compatibility Jamo
+    URange(0x3165, 0x318E),  # "
   ],
   Script.Ethi: [
     URange(0x1200, 0x135A),  # Ethiopic
     URange(0x1380, 0x138F),  # Ethiopic Supplement
+    URange(0x2D80, 0x2DDF),  # Ethiopic Extended
   ],
   Script.Cher: [
     URange(0x13A0, 0x13FF),  # Cherokee
@@ -254,6 +285,51 @@ DATA = {
   Script.Lana: [
     URange(0x1A20, 0x1A54),  # Tai Tham
     URange(0x1AA0, 0x1AA2),  # "
+  ],
+  Script.Bali: [
+    URange(0x1B05, 0x1B33),  # Balinese
+    URange(0x1B45, 0x1B4C),  # "
+  ],
+  Script.Sund: [
+    URange(0x1B83, 0x1BA0),  # Sundanese
+    URange(0x1BAE, 0x1BAF),  # "
+    URange(0x1BBB, 0x1BBF),  # "
+  ],
+  Script.Batk: [
+    URange(0x1BC0, 0x1BE5),  # Batak
+  ],
+  Script.Lepc: [
+    URange(0x1C00, 0x1C23),  # Lepcha
+    URange(0x1C4D, 0x1C4F),  # "
+  ],
+  Script.Olck: [
+    URange(0x1C5A, 0x1C77),  # Ol Chiki
+  ],
+  Script.Brai: [
+    URange(0x2800, 0x28FF),  # Braille Patterns
+  ],
+  Script.Glag: [
+    URange(0x2C00, 0x2C5F),  # Glagolitic
+  ],
+  Script.Tfng: [
+    URange(0x2D30, 0x2D67),  # Tifinagh
+  ],
+  Script.Hani: [
+    URange(0x2E80, 0x2FDF),  # CJK Radicals Supplement +
+                             # Kangxi Radicals
+    URange(0x3190, 0x319F),  # Kanbun
+    URange(0x31C0, 0x31EF),  # CJK Strokes
+    URange(0x3400, 0x9FFF),  # CJK Unified Ideographs Extension A +
+                             # Yijing Hexagram Symbols +
+                             # CJK Unified Ideographs
+  ],
+  Script.Hrkt: [
+    URange(0x3040, 0x30FF),  # Hiragana + Katakana
+    URange(0x31F0, 0x31FF),  # Katakana Phonetic Extensions
+  ],
+  Script.Bopo: [
+    URange(0x3100, 0x312F),  # Bopomofo
+    URange(0x31A0, 0x31BF),  # Bopomofo Extended
   ],
 }
 
