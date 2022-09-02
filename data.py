@@ -119,6 +119,54 @@ class Script(enum.Enum):
   Ougr = 'Old Uyghur'
   Chrs = 'Chorasmian'
   Elym = 'Elymaic'
+  Brah = 'Brahmi'
+  Kthi = 'Kaithi'
+  Sora = 'Sora Sompeng'
+  Cakm = 'Chakma'
+  Mahj = 'Mahajani'
+  Shrd = 'Sharada'
+  Khoj = 'Khojki'
+  Mult = 'Multani'
+  Sind = 'Khudawadi'
+  Gran = 'Grantha'
+  Newa = 'Newa'
+  Tirh = 'Tirhuta'
+  Sidd = 'Siddham'
+  Modi = 'Modi'
+  Takr = 'Takri'
+  Ahom = 'Ahom'
+  Dogr = 'Dogra'
+  Wara = 'Warang Citi'
+  Diak = 'Dives Akuru'
+  Nand = 'Nandinagari'
+  Zanb = 'Zanabazar Square'
+  Soyo = 'Soyombo'
+  Pauc = 'Pau Cin Hau'
+  Bhks = 'Bhaiksuki'
+  Marc = 'Marchen'
+  Gonm = 'Masaram Gondi'
+  Gong = 'Gunjala Gondi'
+  Maka = 'Makasar'
+  Xsux = 'Cuneiform'
+  Cpmn = 'Cypro-Minoan'
+  Egyp = 'Egyptian hieroglyphs'
+  Hluw = 'Anatolian Hieroglyphs'
+  Mroo = 'Mro'
+  Tnsa = 'Tangsa'
+  Bass = 'Bassa Vah'
+  Hmng = 'Pahawh Hmong'
+  Medf = 'Medefaidrin'
+  Plrd = 'Miao'
+  Tang = 'Tangut'
+  Kits = 'Khitan small script'
+  Nshu = 'Nushu'
+  Dupl = 'Duployan'
+  Sgnw = 'SignWriting'
+  Hmnp = 'Nyiakeng Puachue Hmong'
+  Toto = 'Toto'
+  Wcho = 'Wancho'
+  Mend = 'Mende Kikakui'
+  Adlm = 'Adlam'
 
 class URange(Range):
   def __init__(self, start, end):
@@ -146,6 +194,7 @@ DATA = {
     URange(0xAB30, 0xAB5A),  # Latin Extended-E
     URange(0xAB60, 0xAB68),  # "
     URange(0xFB00, 0xFB06),  # Alphabetic Presentation Forms
+    URange(0x1DF00, 0x1DF1E),  # Latin Extended-G
   ],
   Script.Grek: [
     URange(0x0370, 0x0373),  # Greek and Coptic
@@ -316,6 +365,7 @@ DATA = {
     URange(0x1380, 0x138F),  # Ethiopic Supplement
     URange(0x2D80, 0x2DDF),  # Ethiopic Extended
     URange(0xAB00, 0xAB2F),  # Ethiopic Extended-A
+    URange(0x1E7E0, 0x1E7FF),  # Ethiopic Extended-B
   ],
   Script.Cher: [
     URange(0x13A0, 0x13FF),  # Cherokee
@@ -324,7 +374,8 @@ DATA = {
   Script.Cans: [
     URange(0x1401, 0x166C),  # Unified Canadian Aboriginal Syllabics
     URange(0x166F, 0x167F),  # "
-    URange(0x18B0, 0x18F5),  # " Extended
+    URange(0x18B0, 0x18F5),  # U.C.A.S. Extended
+    URange(0x11AB0, 0x11ABF),  # U.C.A.S. Extended-A
   ],
   Script.Ogam: [
     URange(0x1681, 0x169A),  # Ogham
@@ -417,6 +468,9 @@ DATA = {
     URange(0x3040, 0x30FF),  # Hiragana + Katakana
     URange(0x31F0, 0x31FF),  # Katakana Phonetic Extensions
     URange(0xFF66, 0xFF9F),  # Halfwidth and Fullwidth Forms
+    URange(0x1AFF0, 0x1B16F),  # Kana Extended-B + Kana Supplement +
+                               # Kana Extended-A +
+                               # Small Kana Extension
   ],
   Script.Bopo: [
     URange(0x3100, 0x312F),  # Bopomofo
@@ -427,6 +481,7 @@ DATA = {
   ],
   Script.Lisu: [
     URange(0xA4D0, 0xA4FD),  # Lisu
+    URange(0x11FB0, 0x11FB0),  # Lisu Supplement
   ],
   Script.Vaii: [
     URange(0xA500, 0xA60D),  # Vai
@@ -434,6 +489,7 @@ DATA = {
   ],
   Script.Bamu: [
     URange(0xA6A0, 0xA6EF),  # Bamum
+    URange(0x16800, 0x16A3F),  # Bamum Supplement
   ],
   Script.Sylo: [
     URange(0xA800, 0xA801),  # Syloti Nagri
@@ -604,6 +660,168 @@ DATA = {
   ],
   Script.Elym: [
     URange(0x10FE0, 0x10FF6),  # Elymaic
+  ],
+  Script.Brah: [
+    URange(0x11005, 0x11037),  # Brahmi
+    URange(0x11071, 0x11071),  # "
+    URange(0x11075, 0x11075),  # "
+  ],
+  Script.Kthi: [
+    URange(0x11083, 0x110AF),  # Kaithi
+  ],
+  Script.Sora: [
+    URange(0x110D0, 0x110E8),  # Sora Sompeng
+  ],
+  Script.Cakm: [
+    URange(0x11103, 0x11126),  # Chakma
+    URange(0x11144, 0x11144),  # "
+    URange(0x11147, 0x11147),  # "
+  ],
+  Script.Mahj: [
+    URange(0x11150, 0x11172),  # Mahajani
+    URange(0x11176, 0x11176),  # "
+  ],
+  Script.Shrd: [
+    URange(0x11183, 0x111B2),  # Sharada
+  ],
+  Script.Khoj: [
+    URange(0x11200, 0x1122B),  # Khojki
+  ],
+  Script.Mult: [
+    URange(0x11280, 0x112A8),  # Multani
+  ],
+  Script.Sind: [
+    URange(0x112B0, 0x112DE),  # Khudawadi
+  ],
+  Script.Gran: [
+    URange(0x11305, 0x11339),  # Grantha
+    URange(0x1135E, 0x11361),  # "
+  ],
+  Script.Newa: [
+    URange(0x11400, 0x11434),  # Newa
+    URange(0x1145F, 0x1145F),  # "
+  ],
+  Script.Tirh: [
+    URange(0x11481, 0x114AF),  # Tirhuta
+  ],
+  Script.Sidd: [
+    URange(0x11580, 0x115AE),  # Siddham
+    URange(0x115D8, 0x115DB),  # "
+  ],
+  Script.Modi: [
+    URange(0x11600, 0x1162F),  # Modi
+  ],
+  Script.Takr: [
+    URange(0x11680, 0x116AA),  # Takri
+    URange(0x116B8, 0x116B8),  # "
+  ],
+  Script.Ahom: [
+    URange(0x11700, 0x1171A),  # Ahom
+    URange(0x11740, 0x11746),  # "
+  ],
+  Script.Dogr: [
+    URange(0x11800, 0x1182B),  # Dogra
+  ],
+  Script.Wara: [
+    URange(0x118A0, 0x118DF),  # Warang Citi
+  ],
+  Script.Diak: [
+    URange(0x11900, 0x1192F),  # Dives Akuru
+  ],
+  Script.Nand: [
+    URange(0x119A0, 0x119D0),  # Nandinagari
+  ],
+  Script.Zanb: [
+    URange(0x11A00, 0x11A00),  # Zanabazar Square
+    URange(0x11A0B, 0x11A32),  # "
+  ],
+  Script.Soyo: [
+    URange(0x11A50, 0x11A50),  # Soyombo
+    URange(0x11A5C, 0x11A83),  # "
+  ],
+  Script.Pauc: [
+    URange(0x11AC0, 0x11AE4),  # Pauc Cin Hau
+  ],
+  Script.Bhks: [
+    URange(0x11C00, 0x11C2E),  # Bhaiksuki
+  ],
+  Script.Marc: [
+    URange(0x11C72, 0x11CAF),  # Marchen
+  ],
+  Script.Gonm: [
+    URange(0x11D00, 0x11D30),  # Masaram Gondi
+  ],
+  Script.Gong: [
+    URange(0x11D60, 0x11D89),  # Gunjala Gondi
+  ],
+  Script.Maka: [
+    URange(0x11EE0, 0x11EF2),  # Makasar
+  ],
+  Script.Xsux: [
+    URange(0x12000, 0x123FF),  # Cuneiform
+    URange(0x12480, 0x1254F),  # Early Dynastic Cuneiform
+  ],
+  Script.Cpmn: [
+    URange(0x12F90, 0x12FF0),  # Cypro-Minoan
+  ],
+  Script.Egyp: [
+    URange(0x13000, 0x1342F),  # Egyptian Hieroglyphs
+  ],
+  Script.Hluw: [
+    URange(0x14400, 0x1467F),  # Anatolian Hieroglyphs
+  ],
+  Script.Mroo: [
+    URange(0x16A40, 0x16A5E),  # Mro
+  ],
+  Script.Tnsa: [
+    URange(0x16A70, 0x16ABE),  # Tangsa
+  ],
+  Script.Bass: [
+    URange(0x16AD0, 0x16AED),  # Bassa Vah
+  ],
+  Script.Hmng: [
+    URange(0x16B00, 0x16B2F),  # Pahawh Hmong
+    URange(0x16B63, 0x16B8F),  # "
+  ],
+  Script.Medf: [
+    URange(0x16E40, 0x16E7F),  # Medefaidrin
+    URange(0x16E99, 0x16E9A),  # "
+  ],
+  Script.Plrd: [
+    URange(0x16F00, 0x16F4A),  # Miao
+  ],
+  Script.Tang: [
+    URange(0x17000, 0x18AFF),  # Tangut + Tangut Components
+    URange(0x18D00, 0x18D08),  # Tangut Supplement
+  ],
+  Script.Kits: [
+    URange(0x18B00, 0x18CFF),  # Khitan Small Script
+  ],
+  Script.Nshu: [
+    URange(0x1B170, 0x1B2FF),  # Nushu
+  ],
+  Script.Dupl: [
+    URange(0x1BC00, 0x1BC6A),  # Duployan
+  ],
+  Script.Sgnw: [
+    URange(0x1D800, 0x1DA8B),  # SignWriting
+  ],
+  Script.Hmnp: [
+    URange(0x1E100, 0x1E12C),  # Nyiakeng Puache Hmong
+    URange(0x1E137, 0x1E13D),  # "
+    URange(0x1E14E, 0x1E14F),  # "
+  ],
+  Script.Toto: [
+    URange(0x1E290, 0x1E2AD),  # Toto
+  ],
+  Script.Wcho: [
+    URange(0x1E2C0, 0x1E2EB),  # Wancho
+  ],
+  Script.Mend: [
+    URange(0x1E800, 0x1E8C4),  # Mende Kikakui
+  ],
+  Script.Adlm: [
+    URange(0x1E900, 0x1E943),  # Adlam
   ],
 }
 
