@@ -1,8 +1,8 @@
 import enum
 
-from ranges import Range, RangeDict
+from .ranges import Range, RangeDict
 
-from code_point import UnicodeCodePoint
+from .code_point import UnicodeCodePoint
 
 class Script(enum.Enum):
   Zzzz = 'Unknown'
