@@ -6,6 +6,8 @@ from code_point import UnicodeCodePoint
 
 class Script(enum.Enum):
   Zzzz = 'Unknown'
+  Zyyy = 'Common'
+  IPA  = 'IPA'
   Latn = 'Latin'
   Grek = 'Greek'
   Copt = 'Coptic'
@@ -282,7 +284,7 @@ DATA = {
     URange(0x18B0, 0x18F5),  # " Extended
   ],
   Script.Ogam: [
-    URange(0x1681, 0x167A),  # Ogham
+    URange(0x1681, 0x169A),  # Ogham
   ],
   Script.Runr: [
     URange(0x16A0, 0x16EA),  # Runic
