@@ -405,6 +405,13 @@ DATA = {
                              # Yijing Hexagram Symbols +
                              # CJK Unified Ideographs
     URange(0xF900, 0xFAFF),  # CJK Compatibility Ideographs
+    URange(0x20000, 0x2A6DF),  # CJK Unified Ideographs Extension B
+    URange(0x2A700, 0x2EBEF),  # CJK Unified Ideographs Extension C +
+                               # CJK Unified Ideographs Extension D +
+                               # CJK Unified Ideographs Extension E +
+                               # CJK Unified Ideographs Extension F
+    URange(0x2F800, 0x2FA1F),  # CJK Compatibility Ideographs Suppl.
+    URange(0x30000, 0x3134F),  # CJK Unified Ideographs Extension G
   ],
   Script.Hrkt: [
     URange(0x3040, 0x30FF),  # Hiragana + Katakana
