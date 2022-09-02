@@ -76,6 +76,49 @@ class Script(enum.Enum):
   Cham = 'Cham'
   Tavt = 'Tai Viet'
   Mtei = 'Meitei Mayek'
+  Linb = 'Linear B'
+  PHAISTOS = 'Phaistos Disc'
+  Lyci = 'Lycian'
+  Cari = 'Carian'
+  Ital = 'Old Italic'
+  Goth = 'Gothic'
+  Perm = 'Old Permic'
+  Ugar = 'Ugaritic'
+  Xpeo = 'Old Persian'
+  Dsrt = 'Deseret'
+  Shaw = 'Shavian'
+  Osma = 'Osmanya'
+  Osge = 'Osage'
+  Elba = 'Elbasan'
+  Aghb = 'Caucasian Albanian'
+  Vith = 'Vithkuqi'
+  Lina = 'Linear A'
+  Cprt = 'Cypriot syllabary'
+  Armi = 'Imperial Aramaic'
+  Palm = 'Palmyrene'
+  Nbat = 'Nabataean'
+  Hatr = 'Hatran'
+  Phnx = 'Phoenician'
+  Lydi = 'Lydian'
+  Mero = 'Meroitic Hieroglyphs'
+  Merc = 'Meroitic Cursive'
+  Khar = 'Kharoshthi'
+  Sarb = 'Old South Arabian'
+  Narb = 'Old North Arabian'
+  Mani = 'Manichaean'
+  Avst = 'Avestan'
+  Prti = 'Inscriptional Parthian'
+  Phli = 'Inscriptional Pahlavi'
+  Phlp = 'Psalter Pahlavi'
+  Orkh = 'Old Turkic'
+  Hung = 'Old Hungarian'
+  Rohg = 'Hanifi Rohingya'
+  Yezi = 'Yezidi'
+  Sogo = 'Old Sogdian'
+  Sogd = 'Sogdian'
+  Ougr = 'Old Uyghur'
+  Chrs = 'Chorasmian'
+  Elym = 'Elymaic'
 
 class URange(Range):
   def __init__(self, start, end):
@@ -418,6 +461,142 @@ DATA = {
   Script.Mtei: [
     URange(0xAAE0, 0xAAEA),  # Meetei Mayek Extensions
     URange(0xABC0, 0xABE2),  # Meetei Mayek
+  ],
+  Script.Linb: [
+    URange(0x10000, 0x100FF),  # Linear B Syllabary +
+                               # Linear B Ideograms
+  ],
+  Script.PHAISTOS: [
+    URange(0x101D0, 0x101FC),  # Phaistos Disc
+  ],
+  Script.Lyci: [
+    URange(0x10280, 0x1029F),  # Lycian
+  ],
+  Script.Cari: [
+    URange(0x102A0, 0x102DF),  # Carian
+  ],
+  Script.Ital: [
+    URange(0x10300, 0x1031F),  # Old Italic
+    URange(0x1032D, 0x1032F),  # "
+  ],
+  Script.Goth: [
+    URange(0x10330, 0x1034F),  # Gothic
+  ],
+  Script.Perm: [
+    URange(0x10350, 0x10375),  # Old Permic
+  ],
+  Script.Ugar: [
+    URange(0x10380, 0x1039D),  # Ugaritic
+  ],
+  Script.Xpeo: [
+    URange(0x103A0, 0x103CF),  # Old Persian
+  ],
+  Script.Dsrt: [
+    URange(0x10400, 0x1044F),  # Deseret
+  ],
+  Script.Shaw: [
+    URange(0x10450, 0x1047F),  # Shavian
+  ],
+  Script.Osma: [
+    URange(0x10480, 0x1049F),  # Osmanya
+  ],
+  Script.Osge: [
+    URange(0x104B0, 0x104FF),  # Osage
+  ],
+  Script.Elba: [
+    URange(0x10500, 0x1052F),  # Elbasan
+  ],
+  Script.Aghb: [
+    URange(0x10530, 0x10563),  # Caucasian Albanian
+  ],
+  Script.Vith: [
+    URange(0x10570, 0x105BF),  # Vithkuqi
+  ],
+  Script.Lina: [
+    URange(0x10600, 0x1073F),  # Linear A
+    URange(0x10760, 0x1076F),  # "
+  ],
+  Script.Cprt: [
+    URange(0x10800, 0x1083F),  # Cypriot Syllabary
+  ],
+  Script.Armi: [
+    URange(0x10840, 0x10855),  # Imperial Aramaic
+  ],
+  Script.Palm: [
+    URange(0x10860, 0x10876),  # Palmyrene
+  ],
+  Script.Nbat: [
+    URange(0x10880, 0x1089E),  # Nabataean
+  ],
+  Script.Hatr: [
+    URange(0x108E0, 0x108F5),  # Hatran
+  ],
+  Script.Phnx: [
+    URange(0x10900, 0x10915),  # Phoenician
+  ],
+  Script.Lydi: [
+    URange(0x10920, 0x10939),  # Lydian
+  ],
+  Script.Mero: [
+    URange(0x10980, 0x1099D),  # Meroitic Hieroglyphs
+  ],
+  Script.Merc: [
+    URange(0x109A0, 0x109B7),  # Meroitic Cursive
+  ],
+  Script.Khar: [
+    URange(0x10A00, 0x10A00),  # Kharoshthi
+    URange(0x10A10, 0x10A35),  # "
+  ],
+  Script.Sarb: [
+    URange(0x10A60, 0x10A7C),  # Old South Arabian
+  ],
+  Script.Narb: [
+    URange(0x10A80, 0x10A9C),  # Old North Arabian
+  ],
+  Script.Mani: [
+    URange(0x10AC0, 0x10AE4),  # Manichaean
+  ],
+  Script.Avst: [
+    URange(0x10B00, 0x10B35),  # Avestan
+  ],
+  Script.Prti: [
+    URange(0x10B40, 0x10B55),  # Inscriptional Parthian
+  ],
+  Script.Phli: [
+    URange(0x10B60, 0x10B72),  # Inscriptional Pahlavi
+  ],
+  Script.Phlp: [
+    URange(0x10B80, 0x10B91),  # Psalter Pahlavi
+  ],
+  Script.Orkh: [
+    URange(0x10C00, 0x10C48),  # Old Turkic
+  ],
+  Script.Hung: [
+    URange(0x10C80, 0x10CB2),  # Old Hungarian
+    URange(0x10CC0, 0x10CF2),  # "
+  ],
+  Script.Rohg: [
+    URange(0x10D00, 0x10D23),  # Hanifi Rohingya
+  ],
+  Script.Yezi: [
+    URange(0x10E80, 0x10EA9),  # Yezidi
+    URange(0x10EB0, 0x10EB1),  # "
+  ],
+  Script.Sogo: [
+    URange(0x10F00, 0x10F1C),  # Old Sogdian
+    URange(0x10F27, 0x10F27),  # "
+  ],
+  Script.Sogd: [
+    URange(0x10F30, 0x10F45),  # Sogdian
+  ],
+  Script.Ougr: [
+    URange(0x10F70, 0x10F81),  # Old Uyghur
+  ],
+  Script.Chrs: [
+    URange(0x10FB0, 0x10FC4),  # Chorasmian
+  ],
+  Script.Elym: [
+    URange(0x10FE0, 0x10FF6),  # Elymaic
   ],
 }
 
