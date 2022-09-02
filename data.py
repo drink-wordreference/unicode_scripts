@@ -61,6 +61,19 @@ class Script(enum.Enum):
   Hani = 'Han'
   Hrkt = 'Japanese syllabaries'
   Bopo = 'Bopomofo'
+  Yiii = 'Yi'
+  Lisu = 'Lisu'
+  Vaii = 'Vai'
+  Bamu = 'Bamum'
+  Sylo = 'Syloti Nagri'
+  Phag = 'Phags-pa'
+  Saur = 'Saurashtra'
+  Kali = 'Kayah Li'
+  Rjng = 'Rejang'
+  Java = 'Javanese'
+  Cham = 'Cham'
+  Tavt = 'Tai Viet'
+  Mtei = 'Meitei Mayek'
 
 class URange(Range):
   def __init__(self, start, end):
@@ -81,6 +94,12 @@ DATA = {
     URange(0x1D6C, 0x1D9A),  # " + Phonetic Extensions Supplement
     URange(0x2C60, 0x2C7B),  # Latin Extended-C
     URange(0x2C7E, 0x2C7F),  # "
+    URange(0xA722, 0xA787),  # Latin Extended-D
+    URange(0xA78B, 0xA7D9),  # "
+    URange(0xA7F5, 0xA7F7),  # "
+    URange(0xA7FA, 0xA7FF),  # "
+    URange(0xAB30, 0xAB5A),  # Latin Extended-E
+    URange(0xAB60, 0xAB68),  # "
     URange(0xFB00, 0xFB06),  # Alphabetic Presentation Forms
   ],
   Script.Grek: [
@@ -108,6 +127,8 @@ DATA = {
     URange(0x048A, 0x052F),  # " + Cyrillic Supplement
     URange(0x1C80, 0x1C88),  # Cyrillic Extended-C
     URange(0x1D2B, 0x1D2B),  # Phonetic Extensions
+    URange(0xA640, 0xA66E),  # Cyrillic Extended-B
+    URange(0xA680, 0xA69B),  # "
   ],
   Script.Armn: [
     URange(0x0531, 0x0556),  # Armenian
@@ -132,6 +153,8 @@ DATA = {
     URange(0x0886, 0x0886),  # "
     URange(0x0889, 0x088D),  # "
     URange(0x08A0, 0x08C8),  # Arabic Extended-A
+    URange(0xFB50, 0xFDFF),  # Arabic Presentation Forms-A
+    URange(0xFE70, 0xFEFC),  # Arabic Presentation Forms-B
   ],
   Script.Syrc: [
     URange(0x0710, 0x0710),  # Syriac
@@ -156,6 +179,7 @@ DATA = {
     URange(0x0904, 0x0939),  # Devanagari
     URange(0x0958, 0x0961),  # "
     URange(0x0972, 0x097F),  # "
+    URange(0xA8FE, 0xA8FE),  # Devanagari Extended
   ],
   Script.Beng: [
     URange(0x0985, 0x09B9),  # Bengali
@@ -218,6 +242,13 @@ DATA = {
     URange(0x106E, 0x1070),  # "
     URange(0x1075, 0x1082),  # "
     URange(0x108E, 0x108E),  # "
+    URange(0xA9E0, 0xA9E4),  # Myanmar Extended-B
+    URange(0xA9E7, 0xA9EF),  # "
+    URange(0xA9FA, 0xA9FE),  # "
+    URange(0xAA60, 0xAA6F),  # Myanmar Extended-A
+    URange(0xAA74, 0xAA76),  # "
+    URange(0xAA78, 0xAA7A),  # "
+    URange(0xAA7E, 0xAA7F),  # "
   ],
   Script.Geor: [
     URange(0x10A0, 0x10FA),  # Georgian
@@ -230,14 +261,20 @@ DATA = {
     URange(0x1161, 0x11FF),  # "
     URange(0x3131, 0x3163),  # Hangul Compatibility Jamo
     URange(0x3165, 0x318E),  # "
+    URange(0xA960, 0xA97F),  # Hangul Jamo Extended-A
+    URange(0xAC00, 0xD7FF),  # Hangul Syllables +
+                             # Hangul Jamo Extended-B
+    URange(0xFFA1, 0xFFDF),  # Halfwidth and Fullwidth Forms
   ],
   Script.Ethi: [
     URange(0x1200, 0x135A),  # Ethiopic
     URange(0x1380, 0x138F),  # Ethiopic Supplement
     URange(0x2D80, 0x2DDF),  # Ethiopic Extended
+    URange(0xAB00, 0xAB2F),  # Ethiopic Extended-A
   ],
   Script.Cher: [
     URange(0x13A0, 0x13FF),  # Cherokee
+    URange(0xAB70, 0xABBF),  # Cherokee Supplement
   ],
   Script.Cans: [
     URange(0x1401, 0x166C),  # Unified Canadian Aboriginal Syllabics
@@ -322,14 +359,63 @@ DATA = {
     URange(0x3400, 0x9FFF),  # CJK Unified Ideographs Extension A +
                              # Yijing Hexagram Symbols +
                              # CJK Unified Ideographs
+    URange(0xF900, 0xFAFF),  # CJK Compatibility Ideographs
   ],
   Script.Hrkt: [
     URange(0x3040, 0x30FF),  # Hiragana + Katakana
     URange(0x31F0, 0x31FF),  # Katakana Phonetic Extensions
+    URange(0xFF66, 0xFF9F),  # Halfwidth and Fullwidth Forms
   ],
   Script.Bopo: [
     URange(0x3100, 0x312F),  # Bopomofo
     URange(0x31A0, 0x31BF),  # Bopomofo Extended
+  ],
+  Script.Yiii: [
+    URange(0xA000, 0xA4CF),  # Yi Syllables + Yi Radicals
+  ],
+  Script.Lisu: [
+    URange(0xA4D0, 0xA4FD),  # Lisu
+  ],
+  Script.Vaii: [
+    URange(0xA500, 0xA60D),  # Vai
+    URange(0xA610, 0xA62B),  # "
+  ],
+  Script.Bamu: [
+    URange(0xA6A0, 0xA6EF),  # Bamum
+  ],
+  Script.Sylo: [
+    URange(0xA800, 0xA801),  # Syloti Nagri
+    URange(0xA803, 0xA805),  # "
+    URange(0xA807, 0xA80A),  # "
+    URange(0xA80C, 0xA822),  # "
+  ],
+  Script.Phag: [
+    URange(0xA840, 0xA866),  # Phags-pa
+    URange(0xA869, 0xA870),  # "
+  ],
+  Script.Saur: [
+    URange(0xA882, 0xA8B3),  # Saurashtra
+  ],
+  Script.Kali: [
+    URange(0xA90A, 0xA925),  # Kayah Li
+  ],
+  Script.Rjng: [
+    URange(0xA930, 0xA946),  # Rejang
+  ],
+  Script.Java: [
+    URange(0xA984, 0xA9B2),  # Javanese
+  ],
+  Script.Cham: [
+    URange(0xAA00, 0xAA28),  # Cham
+    URange(0xAA40, 0xAA4B),  # "
+  ],
+  Script.Tavt: [
+    URange(0xAA80, 0xAAAF),  # Tai Viet
+    URange(0xAADB, 0xAADC),  # "
+  ],
+  Script.Mtei: [
+    URange(0xAAE0, 0xAAEA),  # Meetei Mayek Extensions
+    URange(0xABC0, 0xABE2),  # Meetei Mayek
   ],
 }
 
